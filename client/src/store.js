@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initalState = {
+const initialState = {
   mode: "dark",
 };
 
 export const globalSlice = createSlice({
   name: "global",
-  initalState,
+  initialState,
+  // chú ý tên phải đúng
   reducers: {
     setMode: (state) => {
       state.mode = state.mode === "light" ? "dark" : "light";
