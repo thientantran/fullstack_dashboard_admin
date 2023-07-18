@@ -17,7 +17,8 @@ import { useDispatch } from "react-redux";
 import { setMode } from "../store";
 import FlexBetween from "./FlexBetween";
 
-export default function Navbar() {
+// eslint-disable-next-line react/prop-types
+export default function Navbar({ isSidebarOpen, setIsSidebarOpen }) {
   const theme = useTheme();
   const dispatch = useDispatch();
   return (
@@ -31,7 +32,7 @@ export default function Navbar() {
       <Toolbar sx={{ justifyContent: "space-between" }}>
         {/* LEFTSIDE */}
         <FlexBetween>
-          <IconButton>
+          <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
             <Menu />
           </IconButton>
           <FlexBetween
