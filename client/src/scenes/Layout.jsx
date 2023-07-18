@@ -10,7 +10,7 @@ export default function Layout() {
   return (
     <Box display={isNonMobile ? "flex" : "block"} width="100%" height="100%">
       <Sidebar isNonMobile={isNonMobile} drawerWidth="250px" />
-      <Box>
+      <Box width="100%">
         <Navbar />
         <Outlet />
       </Box>

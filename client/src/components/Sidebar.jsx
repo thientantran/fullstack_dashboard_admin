@@ -9,12 +9,14 @@ import {
   PointOfSaleOutlined,
   PublicOutlined,
   ReceiptLongOutlined,
+  SettingsOutlined,
   ShoppingCartOutlined,
   TodayOutlined,
   TrendingUpOutlined,
 } from "@mui/icons-material";
 import {
   Box,
+  Divider,
   Drawer,
   IconButton,
   List,
@@ -137,6 +139,7 @@ export default function Sidebar({ isNonMobile, drawerWidth }) {
           </Box>
         </Box>
 
+        {/* LIST OF LINK */}
         <List>
           {navItems.map(({ text, icon }) => {
             // binding các tiêu đề
@@ -187,6 +190,45 @@ export default function Sidebar({ isNonMobile, drawerWidth }) {
             );
           })}
         </List>
+
+        {/* USER INFORMATION  */}
+        <Box position="absolute" bottom="2rem">
+          <Divider />
+          <FlexBetween textTransform="none" gap="1rem" m="1.5rem 0rem 0 3rem">
+            <Box
+              component="img"
+              alt="jisoo"
+              src="https://assets.pikiran-rakyat.com/crop/107x30:614x652/x/photo/2021/09/01/4073990267.jpeg"
+              height="40px"
+              width="40px"
+              borderRadius="50%"
+              sx={{ objectFit: "cover" }}
+            />
+            <Box textAlign="left">
+              <Typography
+                fontWeight="bold"
+                fontSize="0.9rem"
+                sx={{ color: theme.palette.secondary[100] }}
+              >
+                Tan Tran
+              </Typography>
+              <Typography
+                fontSize="0.8rem"
+                sx={{ color: theme.palette.secondary[100] }}
+              >
+                Engineer
+              </Typography>
+            </Box>
+            <IconButton>
+              <SettingsOutlined
+                sx={{
+                  color: theme.palette.secondary[300],
+                  fontSize: "25px ",
+                }}
+              />
+            </IconButton>
+          </FlexBetween>
+        </Box>
       </Drawer>
     </Box>
   );
