@@ -1,4 +1,5 @@
 import {
+  ArrowDropDownOutlined,
   DarkModeOutlined,
   LightModeOutlined,
   Menu,
@@ -7,11 +8,15 @@ import {
 } from "@mui/icons-material";
 import {
   AppBar,
+  Box,
+  Button,
   IconButton,
   InputBase,
   Toolbar,
+  Typography,
   useTheme,
 } from "@mui/material";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { setMode } from "../store";
@@ -21,6 +26,11 @@ import FlexBetween from "./FlexBetween";
 export default function Navbar({ isSidebarOpen, setIsSidebarOpen }) {
   const theme = useTheme();
   const dispatch = useDispatch();
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const isOpen = Boolean(anchorEl);
+  const handleClick = (event) => setAnchorEl(event.currentTarget);
+  const handleClose = () => setAnchorEl(null);
   return (
     <AppBar
       sx={{
@@ -61,6 +71,47 @@ export default function Navbar({ isSidebarOpen, setIsSidebarOpen }) {
           <IconButton>
             <SettingsOutlined sx={{ fontSize: "25px" }} />
           </IconButton>
+
+          {/* FOR USER INFORMATION */}
+          <FlexBetween>
+            <Button
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                textTransform: "none", // chú ý
+                gap: "1rem",
+              }}
+            >
+              <Box
+                component="img"
+                alt="profile"
+                src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRaI0R9U7Auy8U4qmrJSB6nbRoaYPHjDSISed44uByLFgLct69wSYoQRcUxmf03N_-iPl79pnL4FM2Rg1U"
+                height="32px"
+                width="32px"
+                borderRadius="50%"
+                sx={{ objectFit: "cover" }}
+              />
+              <Box>
+                <Typography
+                  fontWeight="bold"
+                  fontSize="0.85rem"
+                  sx={{ color: theme.palette.secondary[100] }}
+                >
+                  User Name
+                </Typography>
+                <Typography
+                  fontSize="0.75rem"
+                  sx={{ color: theme.palette.secondary[200] }}
+                >
+                  Nghe Nghiep
+                </Typography>
+              </Box>
+              <ArrowDropDownOutlined
+                sx={{ color: theme.palette.secondary[300], fontSize: "25px" }}
+              />
+            </Button>
+          </FlexBetween>
         </FlexBetween>
       </Toolbar>
     </AppBar>
