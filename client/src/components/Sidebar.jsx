@@ -2,6 +2,7 @@ import {
   AdminPanelSettingsOutlined,
   CalendarMonthOutlined,
   ChevronLeft,
+  ChevronRightOutlined,
   Groups2Outlined,
   HomeOutlined,
   PieChartOutlined,
@@ -24,7 +25,8 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import FlexBetween from "./FlexBetween";
 const navItems = [
@@ -86,10 +88,17 @@ const navItems = [
   },
 ];
 
+// eslint-disable-next-line react/prop-types
 export default function Sidebar({ isNonMobile, drawerWidth }) {
   const theme = useTheme();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const navigate = useNavigate();
+  const [active, setActive] = useState("");
 
+  const { pathname } = useLocation();
+  useEffect(() => {
+    setActive(pathname.substring(1));
+  }, [pathname]);
   return (
     <Box component="nav">
       <Drawer
@@ -142,9 +151,37 @@ export default function Sidebar({ isNonMobile, drawerWidth }) {
             const lcText = text.toLowerCase();
             return (
               <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>{icon}</ListItemIcon>
+                <ListItemButton
+                  onClick={() => {
+                    navigate(`/${lcText}`);
+                    setActive(lcText);
+                  }}
+                  sx={{
+                    backgroundColor:
+                      active === lcText
+                        ? theme.palette.secondary[300]
+                        : "transparent",
+                    color:
+                      active === lcText
+                        ? theme.palette.primary[600]
+                        : theme.palette.secondary[200],
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      ml: "2rem",
+                      color:
+                        active === lcText
+                          ? theme.palette.primary[600]
+                          : theme.palette.primary[200],
+                    }}
+                  >
+                    {icon}
+                  </ListItemIcon>
                   <ListItemText primary={text} />
+                  {active === lcText && (
+                    <ChevronRightOutlined sx={{ ml: "auto" }} />
+                  )}
                 </ListItemButton>
               </ListItem>
             );
