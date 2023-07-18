@@ -96,6 +96,7 @@ export default function Sidebar({
   drawerWidth,
   isSidebarOpen,
   setIsSidebarOpen,
+  user,
 }) {
   const theme = useTheme();
   const navigate = useNavigate();
@@ -215,13 +216,13 @@ export default function Sidebar({
                   fontSize="0.9rem"
                   sx={{ color: theme.palette.secondary[100] }}
                 >
-                  Tan Tran
+                  {user.name}
                 </Typography>
                 <Typography
                   fontSize="0.8rem"
                   sx={{ color: theme.palette.secondary[100] }}
                 >
-                  Engineer
+                  {user.occupation}
                 </Typography>
               </Box>
               <IconButton>

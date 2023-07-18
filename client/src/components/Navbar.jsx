@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   ArrowDropDownOutlined,
   DarkModeOutlined,
@@ -23,7 +24,7 @@ import { setMode } from "../store";
 import FlexBetween from "./FlexBetween";
 
 // eslint-disable-next-line react/prop-types
-export default function Navbar({ isSidebarOpen, setIsSidebarOpen }) {
+export default function Navbar({ user, isSidebarOpen, setIsSidebarOpen }) {
   const theme = useTheme();
   const dispatch = useDispatch();
 
@@ -98,13 +99,13 @@ export default function Navbar({ isSidebarOpen, setIsSidebarOpen }) {
                   fontSize="0.85rem"
                   sx={{ color: theme.palette.secondary[100] }}
                 >
-                  User Name
+                  {user.name}
                 </Typography>
                 <Typography
                   fontSize="0.75rem"
                   sx={{ color: theme.palette.secondary[200] }}
                 >
-                  Nghe Nghiep
+                  {user.occupation}
                 </Typography>
               </Box>
               <ArrowDropDownOutlined
