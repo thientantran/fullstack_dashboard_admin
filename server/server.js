@@ -33,4 +33,5 @@ mongoose.connect(process.env.MONGO_URL, {
   // Admin.insertMany(dataUser);
     // Product.insertMany(dataProduct)
     // ProductStat.insertMany(dataProductStat)
+    // Transaction.insertMany(dataTransaction)
 }).catch((error) => console.log(`error: ${error}`))
