@@ -5,7 +5,6 @@ import express from "express"
 import helmet from 'helmet'
 import mongoose from "mongoose"
 import morgan from 'morgan'
-// import { dataProduct, dataProductStat, dataUser } from './data.js'
 import clientRouter from "./routes/client.js"
 import generalRouter from "./routes/general.js"
 // CONFIGURATIONS
