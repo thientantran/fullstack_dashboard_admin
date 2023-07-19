@@ -8,7 +8,6 @@ import Product from "../components/Product";
 export default function Products() {
   const { data, isLoading } = useGetProductsQuery();
   const isNonMobile = useMediaQuery("(min-width:1000px)");
-  console.log(data);
   return (
     <Box m="1.5rem 2.5rem">
       <Header subtitle="See your list of products" title="PRODUCTS" />
@@ -24,7 +23,7 @@ export default function Products() {
         }}
       >
         {data || !isLoading ? (
-          data.map((product) => <Product key={product._id} />)
+          data.map((product) => <Product key={product._id} data={product} />)
         ) : (
           <div>...Loading</div>
         )}

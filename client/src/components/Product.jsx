@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   Button,
   Card,
@@ -10,7 +11,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 
-export default function Product() {
+export default function Product({ data }) {
   const theme = useTheme();
   const [isExpanded, setIsExpanded] = useState(false);
   return (
@@ -27,16 +28,16 @@ export default function Product() {
           color={theme.palette.secondary[700]}
           gutterBottom
         >
-          Category
+          {data.category}
         </Typography>
         <Typography variant="h5" component="div">
-          NAME
+          {data.name}
         </Typography>
         <Typography sx={{ mb: "1.5rem" }} color={theme.palette.secondary[400]}>
-          Price
+          ${Number(data.price.toFixed(2))}
         </Typography>
-        <Rating value="4.3" readOnly />
-        <Typography>description</Typography>
+        <Rating value={data.rating} readOnly />
+        <Typography>{data.description}</Typography>
       </CardContent>
 
       <CardActions>
@@ -56,10 +57,14 @@ export default function Product() {
         unmountOnExit
       >
         <CardContent>
-          <Typography>id:</Typography>
-          <Typography>Supply left:</Typography>
-          <Typography>Yearly sales this year:</Typography>
-          <Typography>Yearly Units Sold This Year:</Typography>
+          <Typography>id: {data._id}</Typography>
+          <Typography>Supply left: {data.supply}</Typography>
+          <Typography>
+            Yearly sales this year: {data.stat[0].yearlySalesTotal}
+          </Typography>
+          <Typography>
+            Yearly Units Sold This Year:{data.stat[0].yearlyTotalSoldUnits}
+          </Typography>
         </CardContent>
       </Collapse>
     </Card>
