@@ -7,13 +7,18 @@ export const api = createApi({
   endpoints: (build) => ({
     getUser: build.query({
       query: (id) => `general/admin/${id}`,
-      providesTags: ["User", "Products"],
+      providesTags: ["User", "Products", "Customers"],
     }),
     getProducts: build.query({
       query: () => `client/products`,
       providesTags: ["Products"],
     }),
+    getCustomers: build.query({
+      query: () => `client/customers`,
+      providesTags: ["Customers"],
+    }),
   }),
 });
 
-export const { useGetUserQuery, useGetProductsQuery } = api;
+export const { useGetUserQuery, useGetProductsQuery, useGetCustomersQuery } =
+  api;
