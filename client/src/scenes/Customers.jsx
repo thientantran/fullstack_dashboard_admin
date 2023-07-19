@@ -28,7 +28,6 @@ export default function Customers() {
       headerName: "Phone Number",
       flex: 0.5,
       renderCell: (params) => {
-        console.log(params.row.phoneNumber);
         return params.row.phoneNumber.replace(
           /^(\d{3})(\d{3})(\d{4})/,
           "($1)$2-$3"
