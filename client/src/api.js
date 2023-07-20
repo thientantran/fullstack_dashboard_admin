@@ -23,6 +23,7 @@ export const api = createApi({
         method: "GET",
         params: { page, pageSize, sort, search },
       }),
+      keepUnusedDataFor: 3,
       providesTags: ["Transactions"],
     }),
   }),
