@@ -37,10 +37,10 @@ export const getTransactions = async(req, res) => {
     const {page = 0, pageSize = 20, sort = null, search = ""} = req.query;
     // cái này là lấy data theo phương thức get, dùng query trên đường link
     // lấy thông tin của field cần sort, phải ở định dạng {price: -1 || 1}
-    console.log("SORT", sort)
-    console.log("PAGE:", page)
-    console.log("PAGESIZE:", pageSize)
-    console.log("SEARCH:", search)
+    // console.log("SORT", sort)
+    // console.log("PAGE:", page)
+    // console.log("PAGESIZE:", pageSize)
+    // console.log("SEARCH:", search)
     const generateSort = () => {
       const sortParsed = JSON.parse(sort);
       const sortFormatted = {
