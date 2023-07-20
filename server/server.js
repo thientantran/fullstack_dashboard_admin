@@ -9,6 +9,7 @@ import morgan from 'morgan'
 // import Transaction from "./models/Transaction.js"
 import clientRouter from "./routes/client.js"
 import generalRouter from "./routes/general.js"
+import saleRouter from "./routes/sales.js"
 // CONFIGURATIONS
 
 dotenv.config()
@@ -24,6 +25,7 @@ app.use(cors())
 // ROUTES
 app.use("/general", generalRouter)
 app.use("/client", clientRouter)
+app.use("/sales", saleRouter)
 
 const PORT = process.env.PORT || 9000
 
@@ -36,4 +38,5 @@ mongoose.connect(process.env.MONGO_URL, {
     // Product.insertMany(dataProduct)
     // ProductStat.insertMany(dataProductStat)
     // Transaction.insertMany(dataTransaction)
+    // OverallStat.insertMany(dataOverallStat)
 }).catch((error) => console.log(`error: ${error}`))
