@@ -5,6 +5,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import Customers from "./scenes/Customers";
 import Dashboard from "./scenes/Dashboard";
+import Geography from "./scenes/Geography";
 import Layout from "./scenes/Layout";
 import Products from "./scenes/Products";
 import Transactions from "./scenes/Transactions";
@@ -26,6 +27,7 @@ function App() {
               <Route path="/products" element={<Products />} />
               <Route path="/customers" element={<Customers />} />
               <Route path="/transactions" element={<Transactions />} />
+              <Route path="/geography" element={<Geography />} />
             </Route>
           </Routes>
         </ThemeProvider>

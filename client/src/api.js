@@ -26,6 +26,10 @@ export const api = createApi({
       keepUnusedDataFor: 3,
       providesTags: ["Transactions"],
     }),
+    getGeography: build.query({
+      query: () => `client/geography`,
+      providesTags: ["Geography"],
+    }),
   }),
 });
 
@@ -34,4 +38,5 @@ export const {
   useGetProductsQuery,
   useGetCustomersQuery,
   useGetTransactionsQuery,
+  useGetGeographyQuery,
 } = api;
