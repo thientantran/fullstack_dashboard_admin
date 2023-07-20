@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import Customers from "./scenes/Customers";
+import Daily from "./scenes/Daily";
 import Dashboard from "./scenes/Dashboard";
 import Geography from "./scenes/Geography";
 import Layout from "./scenes/Layout";
@@ -30,6 +31,7 @@ function App() {
               <Route path="/transactions" element={<Transactions />} />
               <Route path="/geography" element={<Geography />} />
               <Route path="/overview" element={<Overview />} />
+              <Route path="/daily" element={<Daily />} />
             </Route>
           </Routes>
         </ThemeProvider>
