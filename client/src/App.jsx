@@ -8,6 +8,7 @@ import Daily from "./scenes/Daily";
 import Dashboard from "./scenes/Dashboard";
 import Geography from "./scenes/Geography";
 import Layout from "./scenes/Layout";
+import Monthly from "./scenes/Monthly";
 import Overview from "./scenes/Overview";
 import Products from "./scenes/Products";
 import Transactions from "./scenes/Transactions";
@@ -32,6 +33,7 @@ function App() {
               <Route path="/geography" element={<Geography />} />
               <Route path="/overview" element={<Overview />} />
               <Route path="/daily" element={<Daily />} />
+              <Route path="/monthly" element={<Monthly />} />
             </Route>
           </Routes>
         </ThemeProvider>
