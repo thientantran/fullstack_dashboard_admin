@@ -2,12 +2,12 @@ import { useTheme } from "@mui/material";
 import { ResponsiveLine } from "@nivo/line";
 import React, { useMemo } from "react";
 
-import { useGetOverviewQuery } from "../api";
+import { useGetSalesQuery } from "../api";
 
 // eslint-disable-next-line react/prop-types
 export default function OverviewChart({ view }) {
   const theme = useTheme();
-  const { data, isLoading } = useGetOverviewQuery();
+  const { data, isLoading } = useGetSalesQuery();
   const [totalSalesLine, totalUnitsLine] = useMemo(() => {
     if (!data) {
       return [];
