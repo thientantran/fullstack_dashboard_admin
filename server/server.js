@@ -5,7 +5,6 @@ import express from "express"
 import helmet from 'helmet'
 import mongoose from "mongoose"
 import morgan from 'morgan'
-// import { dataTransaction } from "./data.js"
 // import Transaction from "./models/Transaction.js"
 import clientRouter from "./routes/client.js"
 import generalRouter from "./routes/general.js"
@@ -41,4 +40,5 @@ mongoose.connect(process.env.MONGO_URL, {
     // ProductStat.insertMany(dataProductStat)
     // Transaction.insertMany(dataTransaction)
     // OverallStat.insertMany(dataOverallStat)
+    // AffiliateStat.insertMany(dataAffiliateStat)
 }).catch((error) => console.log(`error: ${error}`))
