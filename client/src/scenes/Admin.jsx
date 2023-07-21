@@ -3,6 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import React from "react";
 
 import { useGetAdminsQuery } from "../api";
+import DataGridCustomColumnMenu from "../components/DataGridCustomColumnMenu";
 import Header from "../components/Header";
 
 export default function Admin() {
@@ -61,6 +62,7 @@ export default function Admin() {
           getRowId={(row) => row._id}
           rows={data || []}
           columns={columns}
+          slots={{ columnMenu: DataGridCustomColumnMenu }}
         />
       </Box>
     </Box>
