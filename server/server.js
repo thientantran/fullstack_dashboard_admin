@@ -9,6 +9,7 @@ import morgan from 'morgan'
 // import Transaction from "./models/Transaction.js"
 import clientRouter from "./routes/client.js"
 import generalRouter from "./routes/general.js"
+import managementRouter from "./routes/management.js"
 import saleRouter from "./routes/sales.js"
 // CONFIGURATIONS
 
@@ -26,6 +27,7 @@ app.use(cors())
 app.use("/general", generalRouter)
 app.use("/client", clientRouter)
 app.use("/sales", saleRouter)
+app.use("/management", managementRouter)
 
 const PORT = process.env.PORT || 9000
 
