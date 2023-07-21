@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
+import Breakdown from "./scenes/Breakdown";
 import Customers from "./scenes/Customers";
 import Daily from "./scenes/Daily";
 import Dashboard from "./scenes/Dashboard";
@@ -34,6 +35,7 @@ function App() {
               <Route path="/overview" element={<Overview />} />
               <Route path="/daily" element={<Daily />} />
               <Route path="/monthly" element={<Monthly />} />
+              <Route path="/breakdown" element={<Breakdown />} />
             </Route>
           </Routes>
         </ThemeProvider>
