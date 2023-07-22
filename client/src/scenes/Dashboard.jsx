@@ -190,7 +190,7 @@ export default function Dashboard() {
           <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
             Sales By Category
           </Typography>
-          <BreakdownChart />
+          <BreakdownChart isDashboard />
           <Typography
             p="0 0.6rem"
             fontSize="0.8rem"

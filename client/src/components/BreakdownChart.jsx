@@ -4,7 +4,8 @@ import React from "react";
 
 import { useGetSalesQuery } from "../api";
 
-export default function BreakdownChart() {
+// eslint-disable-next-line react/prop-types
+export default function BreakdownChart({ isDashboard = false }) {
   const theme = useTheme();
   const { data, isLoading } = useGetSalesQuery();
   if (!data || isLoading) return "Loading...";
@@ -25,10 +26,10 @@ export default function BreakdownChart() {
   );
   return (
     <Box
-      height="100%"
+      height={isDashboard ? "400px" : "100%"}
       width={undefined}
-      minHeight={undefined}
-      minWidth={undefined}
+      minHeight={isDashboard ? "325px" : undefined}
+      minWidth={isDashboard ? "325px" : undefined}
       position="relative"
     >
       <ResponsivePie
@@ -67,7 +68,11 @@ export default function BreakdownChart() {
           },
         }}
         colors={{ datum: "data.color" }}
-        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+        margin={
+          isDashboard
+            ? { top: 40, right: 80, bottom: 100, left: 50 }
+            : { top: 40, right: 80, bottom: 80, left: 80 }
+        }
         sortByValue
         innerRadius={0.45}
         activeOuterRadiusOffset={8}
@@ -76,7 +81,7 @@ export default function BreakdownChart() {
           from: "color",
           modifiers: [["darker", 0.2]],
         }}
-        arcLinkLabelsSkipAngle={10}
+        enableArcLinkLabels={!isDashboard} // legend cho cac piece of pie
         arcLinkLabelsTextColor={theme.palette.secondary[200]} // chỗ này là màu chữ cho cái label chú thích cho pie
         arcLinkLabelsThickness={2}
         arcLinkLabelsColor={{ from: "color" }}
@@ -90,8 +95,8 @@ export default function BreakdownChart() {
             anchor: "bottom",
             direction: "row",
             justify: false,
-            translateX: 0,
-            translateY: 56,
+            translateX: isDashboard ? 20 : 0,
+            translateY: isDashboard ? 50 : 56,
             itemsSpacing: 0,
             itemWidth: 100,
             itemHeight: 18,
