@@ -52,7 +52,7 @@ export default function Dashboard() {
           p="1rem"
           borderRadius="0.55rem"
         >
-          <OverviewChart view="sales" />
+          <OverviewChart view="sales" isDashboard />
         </Box>
         <StatBox />
         <StatBox />

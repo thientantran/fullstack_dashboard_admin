@@ -20,8 +20,8 @@ import {
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { setMode } from "../store";
 import FlexBetween from "./FlexBetween";
+import { setMode } from "../store";
 
 // eslint-disable-next-line react/prop-types
 export default function Navbar({ user, isSidebarOpen, setIsSidebarOpen }) {

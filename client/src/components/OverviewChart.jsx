@@ -5,7 +5,7 @@ import React, { useMemo } from "react";
 import { useGetSalesQuery } from "../api";
 
 // eslint-disable-next-line react/prop-types
-export default function OverviewChart({ view }) {
+export default function OverviewChart({ isDashboard = false, view }) {
   const theme = useTheme();
   const { data, isLoading } = useGetSalesQuery();
   const [totalSalesLine, totalUnitsLine] = useMemo(() => {
@@ -92,14 +92,19 @@ export default function OverviewChart({ view }) {
       }}
       yFormat=" >-.2f"
       curve="catmullRom"
+      enableArea={isDashboard} // to mau` cai area phia duoi line
       axisTop={null}
       axisRight={null}
       axisBottom={{
+        format: (v) => {
+          if (isDashboard) return v.slice(0, 3);
+          return v;
+        },
         orient: "bottom",
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "Month",
+        legend: isDashboard ? "" : "Month",
         legendOffset: 36,
         legendPosition: "middle",
       }}
@@ -109,7 +114,9 @@ export default function OverviewChart({ view }) {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: `Total ${view === "sales" ? "Revenue" : "Units"} for Year`,
+        legend: isDashboard
+          ? ""
+          : `Total ${view === "sales" ? "Revenue" : "Units"} for Year`,
         legendOffset: -60,
         legendPosition: "middle",
       }}
@@ -121,32 +128,36 @@ export default function OverviewChart({ view }) {
       pointBorderColor={{ from: "serieColor" }}
       pointLabelYOffset={-12}
       useMesh
-      legends={[
-        {
-          anchor: "bottom-right",
-          direction: "column",
-          justify: false,
-          translateX: 30,
-          translateY: -40,
-          itemsSpacing: 0,
-          itemDirection: "left-to-right",
-          itemWidth: 80,
-          itemHeight: 20,
-          itemOpacity: 0.75,
-          symbolSize: 12,
-          symbolShape: "circle",
-          symbolBorderColor: "rgba(0, 0, 0, .5)",
-          effects: [
-            {
-              on: "hover",
-              style: {
-                itemBackground: "rgba(0, 0, 0, .03)",
-                itemOpacity: 1,
+      legends={
+        !isDashboard
+          ? [
+              {
+                anchor: "bottom-right",
+                direction: "column",
+                justify: false,
+                translateX: 30,
+                translateY: -40,
+                itemsSpacing: 0,
+                itemDirection: "left-to-right",
+                itemWidth: 80,
+                itemHeight: 20,
+                itemOpacity: 0.75,
+                symbolSize: 12,
+                symbolShape: "circle",
+                symbolBorderColor: "rgba(0, 0, 0, .5)",
+                effects: [
+                  {
+                    on: "hover",
+                    style: {
+                      itemBackground: "rgba(0, 0, 0, .03)",
+                      itemOpacity: 1,
+                    },
+                  },
+                ],
               },
-            },
-          ],
-        },
-      ]}
+            ]
+          : undefined
+      }
     />
   );
 }
