@@ -10,6 +10,7 @@ export default function StatBox() {
     <Box
       gridColumn="span 2"
       gridRow="span 1"
+      // 2 cai nay` do o the cha su dung grid
       display="flex"
       flexDirection="column"
       justifyContent="space-between"
