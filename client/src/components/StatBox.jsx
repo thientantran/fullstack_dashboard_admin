@@ -1,9 +1,9 @@
-import { Email } from "@mui/icons-material";
 import { Box, Typography, useTheme } from "@mui/material";
 import React from "react";
 
-import { default as FletBetween, default as FlexBetween } from "./FlexBetween";
-export default function StatBox() {
+import FlexBetween from "./FlexBetween";
+// eslint-disable-next-line react/prop-types
+export default function StatBox({ title, value, increase, icon, description }) {
   const theme = useTheme();
 
   return (
@@ -19,18 +19,18 @@ export default function StatBox() {
       bgcolor={theme.palette.background.alt}
       borderRadius="0.55rem"
     >
-      <FletBetween>
+      <FlexBetween>
         <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
-          Title
+          {title}
         </Typography>
-        <Email sx={{ color: theme.palette.secondary[300], fontSize: "26px" }} />
-      </FletBetween>
+        {icon}
+      </FlexBetween>
       <Typography
         variant="h3"
         fontWeight="600"
         sx={{ color: theme.palette.secondary[200] }}
       >
-        value
+        {value}
       </Typography>
       <FlexBetween gap="1rem">
         <Typography
@@ -38,9 +38,9 @@ export default function StatBox() {
           fontStyle="italic"
           sx={{ color: theme.palette.secondary.light }}
         >
-          Increase
+          {increase}
         </Typography>
-        <Typography>Description</Typography>
+        <Typography>{description}</Typography>
       </FlexBetween>
     </Box>
   );

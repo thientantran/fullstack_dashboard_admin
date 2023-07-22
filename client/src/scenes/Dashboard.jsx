@@ -1,4 +1,10 @@
-import { DownloadOutlined } from "@mui/icons-material";
+import {
+  DownloadOutlined,
+  Email,
+  PersonAdd,
+  PointOfSale,
+  Traffic,
+} from "@mui/icons-material";
 import { Box, Button, useMediaQuery, useTheme } from "@mui/material";
 
 import { useGetDashboardQuery } from "../api";
@@ -43,8 +49,28 @@ export default function Dashboard() {
           "& > div": { gridColumn: isNonMediumScreens ? undefined : "span 12" },
         }}
       >
-        <StatBox />
-        <StatBox />
+        <StatBox
+          title="Total Customers"
+          value={data && data.totalCustomers}
+          increase="+14%"
+          description="Since last month"
+          icon={
+            <Email
+              lsx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
+            />
+          }
+        />
+        <StatBox
+          title="Sales Today"
+          value={data && data.todayStats.totalSales}
+          increase="+21%"
+          description="Since last month"
+          icon={
+            <PointOfSale
+              lsx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
+            />
+          }
+        />
         <Box
           gridColumn="span 8"
           gridRow="span 2"
@@ -54,8 +80,28 @@ export default function Dashboard() {
         >
           <OverviewChart view="sales" isDashboard />
         </Box>
-        <StatBox />
-        <StatBox />
+        <StatBox
+          title="Monthly Sales"
+          value={data && data.thisMonthStats.totalSales}
+          increase="+5%"
+          description="Since last month"
+          icon={
+            <PersonAdd
+              lsx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
+            />
+          }
+        />
+        <StatBox
+          title="Yearly Sales"
+          value={data && data.yearlySalesTotal}
+          increase="+43%"
+          description="Since last month"
+          icon={
+            <Traffic
+              sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
+            />
+          }
+        />
       </Box>
     </Box>
   );
