@@ -3,19 +3,20 @@ export const api = createApi({
   // eslint-disable-next-line no-undef
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:6061" }),
   reducerPath: "adminApi",
-  tagTypes: ["User"],
+  tagTypes: [
+    "User",
+    "Products",
+    "Customers",
+    "Transactions",
+    "Geography",
+    "Sales",
+    "Admins",
+    "Performance",
+  ],
   endpoints: (build) => ({
     getUser: build.query({
       query: (id) => `general/admin/${id}`,
-      providesTags: [
-        "User",
-        "Products",
-        "Customers",
-        "Transactions",
-        "Geography",
-        "Sales",
-        "Admins",
-      ],
+      providesTags: ["User"],
     }),
     getProducts: build.query({
       query: () => `client/products`,
@@ -46,6 +47,10 @@ export const api = createApi({
       query: () => `management/admins`,
       providesTags: ["Admins"],
     }),
+    getUserPerformance: build.query({
+      query: (id) => `management/performance/${id}`,
+      providesTags: ["Performance"],
+    }),
   }),
 });
 
@@ -57,4 +62,5 @@ export const {
   useGetGeographyQuery,
   useGetSalesQuery,
   useGetAdminsQuery,
+  useGetUserPerformanceQuery,
 } = api;
